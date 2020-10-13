@@ -4,11 +4,13 @@ from time import sleep
 import datetime
 import json
 import random
-
+import os
+import sys
+path = os.path.abspath(os.path.dirname(sys.argv[0]))
 # 初始化设置
 def InitSetting():
     try:
-        SettingFile = open(r"AutoReport\setting.dat")
+        SettingFile = open(path + "\setting.dat")
         SettingData = json.load(SettingFile)
         print (u'读取到保存的设置: ')
         for key in SettingData:
@@ -32,7 +34,7 @@ def NewSetting():
     Data = dict()
     for key in ['Id', 'Password']:
         Data[key] = globals()[key]
-    json.dump(Data, open(r"AutoReport\setting.dat", 'w'))
+    json.dump(Data, open(path + "\setting.dat", 'w'))
 
 
 # 账号登录
@@ -63,7 +65,7 @@ def Fill(driver):
     driver.find_element_by_id('fineui_19').click()
 
 def Reoprt():
-    driver_url_edge = r"AutoReport\msedgedriver.exe"
+    driver_url_edge = path + "\msedgedriver.exe"
     driver = webdriver.Edge(executable_path=driver_url_edge)
     today = datetime.date.today()
     hour = int(str(datetime.datetime.now())[11:13])
