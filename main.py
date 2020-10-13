@@ -39,11 +39,14 @@ def NewSetting():
         Data[key] = globals()[key]
     json.dump(Data, open(path + "\setting.dat", 'w'))
 
+# # 浏览器设置
+# def SetDriver(driver, driverUrl, uri):
+#     driver = webdriver.Edge(executable_path=driverUrl)
+
 
 # 账号登录
 def Register(driver):
     global Id, Password
-    sleep(2)
     driver.find_element_by_id('username').clear()
     driver.find_element_by_id('username').send_keys(Id)
     driver.find_element_by_id('password').clear()
@@ -55,12 +58,9 @@ def Fill(driver):
     temperature = round(random.uniform(36, 37), 1)
     sleep(1)
     driver.find_element_by_id('p1_ChengNuo-inputEl-icon').click()
-    sleep(1)
     driver.find_element_by_id('p1_TiWen-inputEl').clear()
     driver.find_element_by_id('p1_TiWen-inputEl').send_keys(str(temperature))
-    sleep(1)
     driver.find_element_by_id('fineui_7-inputEl-icon').click()
-    sleep(1)
     driver.find_element_by_id('p1_ctl00_btnSubmit').click()
     sleep(1)
     driver.find_element_by_id('fineui_14').click()
@@ -68,7 +68,7 @@ def Fill(driver):
     driver.find_element_by_id('fineui_19').click()
 
 def Reoprt():
-    driver_url_edge = path + "\msedgedriver.exe"
+    driver_url_edge = path + "\\msedgedriver.exe"
     driver = webdriver.Edge(executable_path=driver_url_edge)
     today = datetime.date.today()
     hour = int(str(datetime.datetime.now())[11:13])
@@ -79,9 +79,10 @@ def Reoprt():
     driver.close()
 
 def HistoryReport():
-#     driver_url_edge = r"AutoReport\msedgedriver.exe"
-#     driver = webdriver.Edge(executable_path=driver_url_edge)
-#     today = datetime.date.today()
+    driver_url_edge = path + "\\msedgedriver.exe"
+    driver = webdriver.Edge(executable_path=driver_url_edge)
+    header = "https://selfreport.shu.edu.cn/XueSFX/HalfdayReport_History.aspx"
+    # today = datetime.date.today()
 #     for i in range(2, 5):
 #         date = today - datetime.timedelta(days=1)
 #         for j in range(1, 3):
