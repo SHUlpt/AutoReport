@@ -7,7 +7,9 @@ import random
 import os
 import sys
 
+# 获取相对路径
 path = os.path.abspath(os.path.dirname(sys.argv[0]))
+
 # 初始化设置
 def InitSetting():
     try:
@@ -76,7 +78,7 @@ def Reoprt():
     Fill(driver) # 内容填写
     driver.close()
 
-# def HistoryReport():
+def HistoryReport():
 #     driver_url_edge = r"AutoReport\msedgedriver.exe"
 #     driver = webdriver.Edge(executable_path=driver_url_edge)
 #     today = datetime.date.today()
@@ -101,8 +103,10 @@ if __name__ == '__main__':
     # 全局设置
     Id, Password = '', ''
     InitSetting()
+    # 每日一报
     Reoprt()
-    # HistoryReport()
+    # 历史报送
+    HistoryReport()
 
 
 
