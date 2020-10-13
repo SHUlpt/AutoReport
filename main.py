@@ -6,6 +6,7 @@ import json
 import random
 import os
 import sys
+
 path = os.path.abspath(os.path.dirname(sys.argv[0]))
 # 初始化设置
 def InitSetting():
